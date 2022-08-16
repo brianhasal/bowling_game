@@ -70,6 +70,16 @@ RSpec.describe BowlingGame do
     end
   end
 
+  describe "#extra_frames" do
+    it "scores totalled including a late strike" do
+      endgame = [1,5,   4,4,    8,'/',    5,3,    'X',    'X',    2,3,    8,'/',    7,1,    'X',    5,4]
+      #           6     8 14    15 29     8 37    22 59   (10+2)  
+      #                                                    15 74  5 79    17 96     8 104   19 123  * *
+      subject = described_class.new #BowlingGame.new
+
+      expect(subject.extra_frames(endgame)).to eq(123)
+    end
+  end
   
 end
 
