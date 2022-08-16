@@ -58,5 +58,18 @@ RSpec.describe BowlingGame do
       expect(subject.run_strike(running_strikes)).to eq(106)
     end
   end
+
+  describe "#late_strike" do
+    it "scores totalled including a late strike" do
+      late_strike = [1,5,   4,4,    8,'/',    5,3,    'X',    'X',    2,3,    8,'/',    'X',    1, 1]
+      #               6     8 14    15 29     8 37    22 59   (10+2)  
+      #                                                       15 74   5 79    20 99     12 111  2 113
+      subject = described_class.new #BowlingGame.new
+
+      expect(subject.late_strike(late_strike)).to eq(113)
+    end
+  end
+
+  
 end
 
