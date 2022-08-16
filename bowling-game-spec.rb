@@ -20,12 +20,11 @@ RSpec.describe BowlingGame do
   end
 
   describe "#spares" do
-    it "scores totalled for each value" do
-      pins = [1,5,  4,4,  8,'/',  5,3,  '-','-',  4,5,  2,3,  8,'/',  7,1,  1,1]
- #             6     8 14   15 29  37              46    51    68      76    78
+    it "scores totalled including spares" do
+      spins = [1,5,  4,4,  8,'/',  5,3,  '-','-',  4,5,  2,3,  8,'/',  7,1,  1,1]
       subject = described_class.new #BowlingGame.new
 
-      expect(subject.simple_test(pins)).to eq(78)
+      expect(subject.spares(spins)).to eq(78)
     end
   end
 end
