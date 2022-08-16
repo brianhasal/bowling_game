@@ -30,11 +30,21 @@ RSpec.describe BowlingGame do
 
   describe "#spares" do
     it "scores totalled including spares" do
-      strikes = [1,5,  4,4,  8,'/',  5,3,  'X',  4,5,  2,3,  8,'/',  7,1,  1,1]
-      #           6    8  14  15 29  8 38 19 57  9 66  5 71  17 87   8 95  2 97
+      strikes = [1,5,   4,4,    8,'/',    5,3,    'X',    4,5,    2,3,    8,'/',    7,1,    1,1]
+      #           6     8 14    15 29     8 38    19 57   9 66    5 71    17 87     8 95    2 97
       subject = described_class.new #BowlingGame.new
 
       expect(subject.strikes_a(strikes)).to eq(97)
+    end
+  end
+
+  describe "#run_mark" do
+    it "scores totalled including spares" do
+      running_marks = [1,5,   4,4,    8,'/',    5,3,    'X',    4,'/',    2,3,    8,'/',    7,1,    1,1]
+      #                 6     8 14    15 29     8 37    20 57   12 69     5 74    17 91     8 99    2 101
+      subject = described_class.new #BowlingGame.new
+
+      expect(subject.run_marks(running_marks)).to eq(101)
     end
   end
 end
