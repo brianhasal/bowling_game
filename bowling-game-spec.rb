@@ -71,13 +71,46 @@ RSpec.describe BowlingGame do
   end
 
   describe "#extra_frames" do
-    it "scores totalled including a late strike" do
+    it "scores totalled including a extra frames" do
       endgame = [1,5,   4,4,    8,'/',    5,3,    'X',    'X',    2,3,    8,'/',    7,1,    'X',    5,4]
       #           6     8 14    15 29     8 37    22 59   (10+2)  
       #                                                    15 74  5 79    17 96     8 104   19 123  * *
       subject = described_class.new #BowlingGame.new
 
       expect(subject.extra_frames(endgame)).to eq(123)
+    end
+  end
+
+  describe "#triple_x" do
+    it "scores totalled including a extra frames & triple x" do
+      infinity_war = [1,5,  4,4,    8,'/',    5,3,    'X',    'X',   'X',     8,'/',    7,1,    'X',    5,4]
+      #               6     8 14    15 29     8 37    30 67   (10+10)
+      #                                                       28 95  (10+8) 
+      #                                                               20 115  17 132    8 140   19 159  * *
+      subject = described_class.new #BowlingGame.new
+
+      expect(subject.triple_x(infinity_war)).to eq(159)
+    end
+  end
+
+  describe "#tricky_finish" do
+    it "scores totalled including a extra frames & triple x & tricky finish" do
+      kang = [1,5,  4,4,    8,'/',    5,3,    'X',    'X',   'X',     8,'/',    7,1,    'X',    'X', 'X']
+      #               6     8 14    15 29     8 37    30 67   (10+10)
+      #                                                       28 95  (10+8) 
+      #                                                               20 115  17 132    8 140   30 170
+      subject = described_class.new #BowlingGame.new
+
+      expect(subject.tricky_finish(kang)).to eq(170)
+    end
+  end
+
+  describe "#bowling" do
+    it "scores totalled for perfect game" do
+      perfect = ['X',  'X',  'X',  'X',  'X',  'X',  'X',  'X',  'X',  'X', 'X', 'X']
+      subject = described_class.new #BowlingGame.new
+
+      expect(subject.bowling(perfect)).to eq(300)
     end
   end
   
