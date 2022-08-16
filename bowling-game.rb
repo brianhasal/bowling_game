@@ -35,6 +35,9 @@ class BowlingGame
       if array[i + 1] == "/"
         total += 10 + array[i + 2]
         i += 2
+      elsif array[i] == "X"
+        total += 10 + array[i + 1] + array[i + 2]
+        i += 1
       elsif array[i] == '-'
         i += 1
       else
